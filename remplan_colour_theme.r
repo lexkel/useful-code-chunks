@@ -1,12 +1,11 @@
 
   #====================================================================================================
   #
-  # REMPLAN colour palette
+  # REMPLAN colour palette - two examples down the bottom if needed
   #
   # Source: https://drsimonj.svbtle.com/creating-corporate-colour-palettes-for-ggplot2
   #====================================================================================================
-  
-  library(tidyverse)
+
   
   # Remplan colour theme
   remplan_colours <- c(remplan     = "#D71335",
@@ -44,12 +43,12 @@
     colorRampPalette(pal, ...)
   }
   
-  scale_color_remplan <- function(palette = "warm", discrete = TRUE, reverse = FALSE, ...) {
+  scale_colour_remplan <- function(palette = "warm", discrete = TRUE, reverse = FALSE, ...) {
     pal <- get_remplan_palette(palette = palette, reverse = reverse)
     if (discrete) {
       discrete_scale("colour", paste0("remplan_", palette), palette = pal, ...)
     } else {
-      scale_color_gradientn(colours = pal(256), ...)
+      scale_colour_gradientn(colours = pal(256), ...)
     }
   }
   
@@ -61,21 +60,17 @@
       scale_fill_gradientn(colours = pal(256), ...)
     }
   }
-  
+
   # Example of ggplot with remplan colours
-  ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Species)) +
-          geom_point(size = 4) +
-          scale_color_remplan()
-  
-  # Example of ggplot with remplan colours
-  theme_set(theme_minimal())
-  
-  ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Species)) +
-    geom_point(size = 4) +
-    scale_color_remplan()
-  
-  ggplot(mpg, aes(manufacturer, fill = manufacturer)) +
-    geom_bar() +
-    theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-    scale_fill_remplan(palette = "all8", guide = "none")
+  # library(tidyverse)
+  # theme_set(theme_minimal())
+  # 
+  # ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Species)) +
+  #   geom_point(size = 4) +
+  #   scale_colour_remplan()
+  # 
+  # ggplot(mpg, aes(manufacturer, fill = manufacturer)) +
+  #   geom_bar() +
+  #   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  #   scale_fill_remplan(palette = "all8", guide = "none")
   
